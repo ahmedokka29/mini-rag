@@ -45,11 +45,10 @@ cp .env.example .env
 
 Edit `.env` and add your configuration values (e.g., API keys).
 
-### 5. Run the Project
+### 5. Run the Project (FastAPI)
 
 ```bash
-# Using uv
-uv run python main.py
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ## Installation Methods
