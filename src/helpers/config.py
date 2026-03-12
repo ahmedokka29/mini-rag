@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     APP_ENV: str
     FILE_ALLOWED_TYPES: list[str]
     FILE_MAX_SIZE_MB: int
+    FILE_DEFAULT_CHUNK_SIZE: int
 
 
 @lru_cache()
