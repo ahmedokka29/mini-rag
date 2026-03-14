@@ -17,8 +17,9 @@ class DataController(BaseController):
         # For example, check file type, size, etc.
         if file.content_type not in self.app_settings.FILE_ALLOWED_TYPES:
             return False, ResponseStatus.FILE_TYPE_NOT_SUPPORTED.value
-        if file.size > self.app_settings.FILE_MAX_SIZE_MB * self.size_scale:
-            return False, ResponseStatus.FILE_SIZE_EXCEEDS_LIMIT.value
+        if file.size is not None:
+            if file.size > self.app_settings.FILE_MAX_SIZE_MB * self.size_scale:
+                return False, ResponseStatus.FILE_SIZE_EXCEEDS_LIMIT.value
 
         return True, ResponseStatus.FILE_VALIDATED_SUCCESS.value
 
@@ -42,7 +43,9 @@ class DataController(BaseController):
 
         return new_file_path
 
-    def get_clean_filename(self, filename: str):
+    def get_clean_filename(self, filename: str | None):
+        if not filename:
+            return "unnamed_file"
         # Remove any characters that are not alphanumeric, dots, or underscores
         cleaned_filename = re.sub(r'[^\w.-]', '_', filename.strip())
 

@@ -31,10 +31,11 @@ async def upload_data(project_id: str, file: UploadFile,
 
     # Save the file to the specified location
     project_dir_oath = ProjectController().get_project_path(project_id=project_id)
-    file_path = data_controller.generate_unique_filename(
-        original_filename=file.filename,
-        project_id=project_id
-    )
+    if file.filename is not None:
+        file_path = data_controller.generate_unique_filename(
+            original_filename=file.filename,
+            project_id=project_id
+        )
     try:
         async with aiofiles.open(file_path, 'wb') as out_file:
             while chunk := await file.read(app_settings.FILE_DEFAULT_CHUNK_SIZE):
