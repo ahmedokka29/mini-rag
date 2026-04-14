@@ -1,0 +1,5 @@
+$kind: http-request
+name: welcome-request api-v1 (health-check)
+url: "{{api}}/api/v1"
+method: GET
+order: 2000

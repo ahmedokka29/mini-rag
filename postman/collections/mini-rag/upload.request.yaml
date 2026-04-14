@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{api}}/api/v1/data/upload/5"
+method: POST
+body:
+  type: formdata
+  content:
+    - type: file
+      key: file
+      src: d:\Ahmed\GitHub projects\mini-rag\src\assets\mini-rag.txt
+order: 3000
