@@ -7,3 +7,5 @@ class ResponseStatus(Enum):
     FILE_SIZE_EXCEEDS_LIMIT = "File size exceeds the maximum allowed size"
     FILE_UPLOAD_SUCCESS = "File uploaded successfully"
     FILE_UPLOAD_FAILURE = "File upload failed"
+    PROCESSING_FAILED = "File processing failed"
+    PROCESSING_SUCCESS = "File processed successfully"
