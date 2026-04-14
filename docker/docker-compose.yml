@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27007:27017"
+      # - "outer_port:inner_port"
+    volumes:
+      - ./mongodb_data:/data/db
+      # - ./host_path:container_path
+    networks:
+      - backend
+    restart: always
+
+networks:
+  backend:
+    
