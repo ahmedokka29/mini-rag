@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 
 
 class Project(BaseModel):
-    _id: Optional[ObjectId]
+    _id: Optional[ObjectId] = None
     project_id: str = Field(..., min_length=1,
                             description="Unique identifier for the project")
 
@@ -16,3 +16,16 @@ class Project(BaseModel):
 
     class Config:
         arbitrary_types_allowed = True
+
+    @classmethod
+    def get_indexes(cls):
+        return [
+            {
+                "keys": [
+                    ("project_id", 1)
+                ],
+                "name": "project_id_index_1",
+                "options": {"unique": True}
+                # "unique": True if options not working
+            }
+        ]
