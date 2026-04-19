@@ -6,12 +6,18 @@ services:
       - "27007:27017"
       # - "outer_port:inner_port"
     volumes:
-      - ./mongodb_data:/data/db
+      - ./mongodb:/data/db
       # - ./host_path:container_path
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     networks:
       - backend
     restart: always
 
 networks:
   backend:
+
+volumes:
+  mongodb:
     
