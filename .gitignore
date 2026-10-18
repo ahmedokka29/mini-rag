@@ -1,1 +1,7 @@
 .postman/resources.yaml
+.venv/
+__pycache__/
+node_modules/
+dist/
+.env
+graphify-out/
